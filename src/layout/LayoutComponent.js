@@ -1,22 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import {
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-} from "@material-ui/core";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { Drawer } from "@material-ui/core";
 
-import ListItemText from "@material-ui/core/ListItemText";
 import Routes from "../Routes";
-import UserList from "../UserList";
+import User from "../pages/Users/User";
 import TopNavBar from "./TopNavBar";
+import UserSideBar from "../pages/Users/UserSideBar";
+import { Router } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -64,36 +55,14 @@ export default function LayoutComponent() {
         }}
       >
         <Toolbar />
-        <div className={classes.drawerContainer}>
-          <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  <ArrowForwardIosIcon></ArrowForwardIosIcon>
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
 
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  <ArrowForwardIosIcon></ArrowForwardIosIcon>
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-        </div>
+        <UserSideBar className={classes.drawerContainer}></UserSideBar>
       </Drawer>
       <Toolbar />
       <main className={classes.content}>
         <Toolbar />
         <Routes />
-        <UserList />
+        <User />
       </main>
     </div>
   );
