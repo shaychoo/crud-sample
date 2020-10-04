@@ -11,11 +11,12 @@ import {
   ListItem,
   ListItemIcon,
 } from "@material-ui/core";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import Routes from "./Routes";
-import UserList from "./UserList";
+import Routes from "../Routes";
+import UserList from "../UserList";
+import TopNavBar from "./TopNavBar";
 
 const drawerWidth = 240;
 
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    textAlign: "right",
+    textAlign: "center",
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -49,22 +50,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function LayoutComponent() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
-          <Typography variant="h6" className={classes.title}>
-            iLearn
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
+      <TopNavBar></TopNavBar>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -78,25 +69,24 @@ export default function ButtonAppBar() {
             {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <ArrowForwardIosIcon></ArrowForwardIosIcon>
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
           </List>
           <Divider />
-          <Rtl>
-            <List>
-              {["All mail", "Trash", "Spam"].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ))}
-            </List>
-          </Rtl>
+
+          <List>
+            {["All mail", "Trash", "Spam"].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  <ArrowForwardIosIcon></ArrowForwardIosIcon>
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
         </div>
       </Drawer>
       <Toolbar />

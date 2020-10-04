@@ -1,17 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Routes from './Routes';
+import React from "react";
+import "./App.css";
+
+import LayoutComponent from "./layout/LayoutComponent";
 
 function App() {
   return (
     <div className="App">
-      <Routes />
+      <LayoutComponent></LayoutComponent>
     </div>
   );
 }
-
-
-
 
 export default App;
