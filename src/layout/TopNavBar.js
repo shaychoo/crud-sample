@@ -36,6 +36,16 @@ export default function TopNavBar() {
           </Typography>
 
           <Button color="inherit">
+            <Link to="/">Home</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/about">About</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/users">Users</Link>
+          </Button>
+
+          <Button color="inherit">
             <NotificationsIcon></NotificationsIcon>
           </Button>
           <Button color="inherit">

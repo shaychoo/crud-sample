@@ -1,47 +1,13 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Drawer } from "@material-ui/core";
 
-import Routes from "../Routes";
 import User from "../pages/Users/User";
 import TopNavBar from "./TopNavBar";
 import UserSideBar from "../pages/Users/UserSideBar";
-import { Router } from "react-router-dom";
+import { useStyles } from "./drawerWidth";
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    direction: "rtl",
-  },
-
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-    textAlign: "center",
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    marginLeft: drawerWidth,
-  },
-}));
-
-export default function LayoutComponent() {
+export default function LayoutSideBarComponent(props) {
   const classes = useStyles();
 
   return (
@@ -61,7 +27,8 @@ export default function LayoutComponent() {
       <Toolbar />
       <main className={classes.content}>
         <Toolbar />
-        <Routes />
+        {props.children}
+        {/* <Routes /> */}
         <User />
       </main>
     </div>

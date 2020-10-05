@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
-
-import LayoutComponent from "./layout/LayoutComponent";
+import Routes from "./Routes";
 
 function App() {
   return (
     <div className="App">
-      <LayoutComponent></LayoutComponent>
+      <Routes />
     </div>
   );
 }
