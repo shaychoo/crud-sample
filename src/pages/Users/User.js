@@ -1,6 +1,11 @@
-import React, { Fragment, useEffect, useState } from "react";
-import axios from "axios";
-import { Button, List, ListItem, ListItemText } from "@material-ui/core";
+import React, { Fragment, useState } from "react";
+import {
+  Button,
+  CircularProgress,
+  List,
+  ListItem,
+  ListItemText,
+} from "@material-ui/core";
 import { useDataApi } from "../../utils/useDataApi";
 
 const User = () => {
@@ -29,7 +34,7 @@ const User = () => {
       </Button>
 
       {isLoading ? (
-        <div>Loading ...</div>
+        <CircularProgress />
       ) : (
         <List>
           {data.hits.map((item) => (
