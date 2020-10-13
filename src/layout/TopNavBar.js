@@ -1,6 +1,7 @@
 import React from "react";
 import {
   AppBar,
+  IconButton,
   Button,
   makeStyles,
   Toolbar,
@@ -13,11 +14,10 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    // direction: "rtl",
   },
   title: {
     flexGrow: 1,
-    textAlign: "center",
+    textAlign: "left",
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -35,22 +35,22 @@ export default function TopNavBar() {
             iLearn
           </Typography>
 
-          <Button color="inherit">
-            <Link to="/">Home</Link>
+          <Button color="inherit" component={Link} to="/">
+            Home
           </Button>
-          <Button color="inherit">
-            <Link to="/about">About</Link>
+          <Button color="inherit" component={Link} to="/about">
+            About
           </Button>
-          <Button color="inherit">
-            <Link to="/users">Users</Link>
+          <Button color="inherit" component={Link} to="/users">
+            Users
           </Button>
 
-          <Button color="inherit">
+          <IconButton color="inherit">
             <NotificationsIcon></NotificationsIcon>
-          </Button>
-          <Button color="inherit">
+          </IconButton>
+          <IconButton color="inherit">
             <AccountCircleIcon></AccountCircleIcon>
-          </Button>
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

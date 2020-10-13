@@ -1,21 +1,15 @@
 import React, { Fragment, useState } from "react";
-import {
-  Button,
-  CircularProgress,
-  List,
-  ListItem,
-  ListItemText,
-} from "@material-ui/core";
+import { Button, CircularProgress, Grid } from "@material-ui/core";
+
+import MyCard from "../../utils/material-ui/MyCard";
 import { useDataApi } from "../../utils/useDataApi";
 
 const User = () => {
-  const [query, setQuery] = useState("redux");
-  const [{ data, isLoading, isError }, doFetch] = useDataApi(
-    "https://hn.algolia.com/api/v1/search?query=redux",
-    {
-      hits: [],
-    }
-  );
+  const [query, setQuery] = useState("");
+  const [
+    { data, isLoading, isError },
+    doFetch,
+  ] = useDataApi("https://jsonplaceholder.typicode.com/users/", [{ name: "" }]);
 
   return (
     <Fragment>
@@ -27,7 +21,7 @@ const User = () => {
       <Button
         type="button"
         onClick={() =>
-          doFetch(`http://hn.algolia.com/api/v1/search?query=${query}`)
+          doFetch(`https://jsonplaceholder.typicode.com/users/${query}`)
         }
       >
         Search
@@ -36,13 +30,19 @@ const User = () => {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <List>
-          {data.hits.map((item) => (
-            <ListItem button key={item.objectID}>
-              <ListItemText primary={item.title}></ListItemText>
-            </ListItem>
+        <Grid container>
+          {(data.map === undefined ? [data] : data).map((user) => (
+            <Grid item key={user.id} xs={4}>
+              <MyCard
+                avatar={user.name.substr(0, 1)}
+                header={user.name}
+                subheader={user.email}
+                content={user.phone}
+                more={user.website}
+              ></MyCard>
+            </Grid>
           ))}
-        </List>
+        </Grid>
       )}
     </Fragment>
   );

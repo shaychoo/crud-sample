@@ -8,16 +8,12 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    direction: "rtl",
   },
 
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
-    flexGrow: 1,
-    textAlign: "center",
-  },
+
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
   },
