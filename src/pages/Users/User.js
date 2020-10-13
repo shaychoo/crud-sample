@@ -9,13 +9,11 @@ import {
 import { useDataApi } from "../../utils/useDataApi";
 
 const User = () => {
-  const [query, setQuery] = useState("redux");
-  const [{ data, isLoading, isError }, doFetch] = useDataApi(
-    "https://hn.algolia.com/api/v1/search?query=redux",
-    {
-      hits: [],
-    }
-  );
+  const [query, setQuery] = useState("");
+  const [
+    { data, isLoading, isError },
+    doFetch,
+  ] = useDataApi("https://jsonplaceholder.typicode.com/users/", [{}]);
 
   return (
     <Fragment>
@@ -27,7 +25,7 @@ const User = () => {
       <Button
         type="button"
         onClick={() =>
-          doFetch(`http://hn.algolia.com/api/v1/search?query=${query}`)
+          doFetch(`https://jsonplaceholder.typicode.com/users/${query}`)
         }
       >
         Search
@@ -37,9 +35,9 @@ const User = () => {
         <CircularProgress />
       ) : (
         <List>
-          {data.hits.map((item) => (
-            <ListItem button key={item.objectID}>
-              <ListItemText primary={item.title}></ListItemText>
+          {(data.map === undefined ? [data] : data).map((item) => (
+            <ListItem button key={item.id}>
+              <ListItemText primary={item.name}></ListItemText>
             </ListItem>
           ))}
         </List>
